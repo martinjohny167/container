@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: List
+items:
+# Delete all services
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: postgres
+    namespace: supabase
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: gotrue
+    namespace: supabase
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: rest
+    namespace: supabase
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: realtime
+    namespace: supabase
+
+# Delete all deployments
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: gotrue
+    namespace: supabase
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: rest
+    namespace: supabase
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: realtime
+    namespace: supabase
+
+# Delete StatefulSet
+- apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    name: postgres
+    namespace: supabase
+
+# Delete ConfigMap
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: supabase-config
+    namespace: supabase
+
+# Delete Secret
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: supabase-auth
+    namespace: supabase
+
+# Delete the namespace (this will delete everything in it)
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: supabase 
